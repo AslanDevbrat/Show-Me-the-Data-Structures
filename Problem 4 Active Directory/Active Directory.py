@@ -48,8 +48,15 @@ def is_user_in_group(user, group):
             return False
         if user in item.get_users():
             return True
-        return is_user_in_group(user,item.get_groups())
-    return False
+
+        if len(item.get_groups())>0:
+            temp = is_user_in_group(user,item.get_groups())
+            if temp:
+                return True
+            else:
+                return False
+        return False
+    
 
     
 #print(is_user_in_group('sub__child_user',[parent]))

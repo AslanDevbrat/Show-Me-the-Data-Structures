@@ -16,6 +16,6 @@ The proof_of_work (block) fuction is taking the most of the time to find the has
  - The check_chain_validity() take time proportional to the length of the chain
 	 O(n)
  - Finally after creating the chain list it take time proportional to the lenght of the chain to make LinkedList. O(n)
- ** Overall Time Complexity = O(n+10^m)** where m is the dificulty level and n is the number of blocks
+ ** Overall Time Complexity = O(1)** because The time complexity of adding a single transaction is what we are looking for.
 ## Space Complexity = O(n)
 

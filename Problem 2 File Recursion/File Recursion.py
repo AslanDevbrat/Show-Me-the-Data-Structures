@@ -1,5 +1,5 @@
 import os
-paths_list=list()
+
 def find_files(suffix, path):
     """
     Find all files beneath path with file name suffix.
@@ -19,27 +19,32 @@ def find_files(suffix, path):
     if suffix.isnumeric() or len(suffix)==0 :
         #print('Invalid Suffix')
         return ['Invalid Syntax']
+    paths_list=[]
     if os.path.isfile(path):
         if path.endswith(suffix):
             
             #print(path)
-            paths_list.append(path)
-            return
+            return path
         return 
     
-    
+
     for item in os.listdir(path):
         new_path = os.path.join(path,item)
-        find_files(suffix,new_path)
+        temp =find_files(suffix,new_path)
+        if temp:
+            paths_list.append(temp)
         
         
     #print(os.listdir('./testdir/subdir1'))
     #print(os.path.isdir('./testdir/subdir1/a.c'))
+    
     return paths_list
 def test_func(paths):
     for path in paths:
-        print(path)
-    
+        if type(path) is list:
+            test_func(path)
+        else:
+            print(path)
 #test 1
 print("List all file with extension .c")
 paths_list =[]

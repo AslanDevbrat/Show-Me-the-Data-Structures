@@ -20,6 +20,7 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.head = None
+        self.tail = None
 
     def __str__(self):
         cur_head = self.head
@@ -34,14 +35,13 @@ class LinkedList:
 
         if self.head is None:
             self.head = Node(value)
-            return
+            self.tail = self.head
+            return self.head
 
-        node = self.head
-        while node.next:
-            node = node.next
-
-        node.next = Node(value)
-
+        else:
+            self.tail.next = Node(value)
+            self.tail = self.tail.next
+            return self.head
     def size(self):
         size = 0
         node = self.head
